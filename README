@@ -19,7 +19,7 @@ The user is able to pause the update process, restart it, and change the speed.
 
 
 GUI:
-The UI is done primarily through JavaFX and fxml. The actual rendering of the 
+The UI is done primarily through JavaFX and FXML. The actual rendering of the 
 grid is done using a PixelBuffer inside the Renderer class(Also note the DemoPlayer
 for the title utilizes essentially the same rendering routine, just slightly different
 to allow for effects and other settings). The renderer has in engine zooming and panning. 
