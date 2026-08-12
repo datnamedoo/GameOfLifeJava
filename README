@@ -1,0 +1,40 @@
+//will add more to readme//
+
+
+Setup:
+Requires JavaFX and Maven to be installed.
+
+
+Engine:
+The engine uses an array of longs to represent the grid. The cells
+are selected with a sequence of bit shifts. The cells are then 
+updated via a precalculated lookup table of possible cell neighbors. 
+Most of this has been somewhat abstracted through the use of the 
+ArrayHelpers class. The engine allows for both multi and single threading.
+The single threaded mode is a basic run through of every row on the grid.
+The multi threaded mode initializes a thread pool and delegates each a certain
+chunk of rows depending on the grid size and number of availabe threads.
+The user is able to pause the update process, restart it, and change the speed.
+
+
+
+GUI:
+The UI is done primarily through JavaFX and fxml. The actual rendering of the 
+grid is done using a PixelBuffer inside the Renderer class(Also note the DemoPlayer
+for the title utilizes essentially the same rendering routine, just slightly different
+to allow for effects and other settings). The renderer has in engine zooming and panning. 
+Zooming also adjusts the viewport to only render the visible area. The panning 
+utilizes a velocity vector to smooth out movements. The top section of the game
+screen has a section for game controls. It also allows the user to change the current palette
+used when rendering the grid. The main menu is layed out in the menu FXML file. 
+It lets the user change the initial grid size, and the threading mode used for the engine. 
+The background of the main menu is just a prerendered loop of a given simulation (made it randomize 
+the palette as well).
+
+
+Controls:
+(Also available inside the Settings tabe on the main menu)
+Pan Camera - LEFT CLICK
+Zoom Camera - MouseWheel/Q/E
+Quick Restart - R
+Quick Pause - SPACE

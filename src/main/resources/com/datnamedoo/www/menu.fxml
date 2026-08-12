@@ -134,7 +134,7 @@ fx:controller="com.datnamedoo.www.MenuController" fx:id = "mainMenu">
         </font>       
     </Text>
     
-    <Text text="Pan Camera - RIGHT CLICK" fill="#ffff1f" stroke="#0c0b0b" strokeWidth="0.5" >     
+    <Text text="Pan Camera - LEFT CLICK" fill="#ffff1f" stroke="#0c0b0b" strokeWidth="0.5" >     
         <font>
             <Font name="System Bold" size="30"/>
         </font>       
