@@ -41,7 +41,7 @@ public class ArrayHelpers {  //important functions for handling long array
         array[desiredLong] &= ~((long) 1 << longIdx);
     }
 
-    public static void setAllAlive(long[] array, int[] gridInfo) {  //sets all cells to be dead iteratively, good for testing
+    public static void setAllAlive(long[] array, int[] gridInfo) {  //sets all cells to be alive iteratively, good for testing
     
         for (int y = 0; y < gridInfo[2]; y++) {  // just goes through and flips every bit for testing
             for (int x = 0; x < gridInfo[1]; x++) {
