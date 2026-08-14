@@ -1,11 +1,16 @@
-//will add more to readme//
+## Game Of Life 
+A version of Conway's Game of Life implemented in Java and JavaFX. Uses a
+bit based simulation engine, multithreaded game updates, and
+interactive camera controls.
+
+![Game Example](assets/GoLGif.gif)
 
 
-Setup:
+## Setup:
 Requires JavaFX and Maven to be installed.
 
 
-Engine:
+## Engine:
 The engine uses an array of longs to represent the grid. The cells
 are selected with a sequence of bit shifts. The cells are then 
 updated via a precalculated lookup table of possible cell neighbors. 
@@ -18,7 +23,7 @@ The user is able to pause the update process, restart it, and change the speed.
 
 
 
-GUI:
+## GUI:
 The UI is done primarily through JavaFX and FXML. The actual rendering of the 
 grid is done using a PixelBuffer inside the Renderer class(Also note the DemoPlayer
 for the title utilizes essentially the same rendering routine, just slightly different
@@ -32,7 +37,7 @@ The background of the main menu is just a prerendered loop of a given simulation
 the palette as well).
 
 
-Controls:
+## Controls:
 (Also available inside the Settings tabe on the main menu)
 Pan Camera - LEFT CLICK
 Zoom Camera - MouseWheel/Q/E
