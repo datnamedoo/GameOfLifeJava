@@ -37,7 +37,7 @@ The background of the main menu is just a prerendered loop of a given simulation
 the palette as well).
 
 
-## Controls (Also available inside the Settings tabe on the main menu):
+## Controls (Also available inside the Settings Tab):
 Pan Camera - LEFT CLICK <br>
 Zoom Camera - MouseWheel/Q/E <br>
 Quick Restart - R <br>
