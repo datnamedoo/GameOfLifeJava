@@ -1,4 +1,4 @@
-## Game Of Life 
+# Game Of Life 
 A version of Conway's Game of Life implemented in Java and JavaFX. Uses a
 bit based simulation engine, multithreaded game updates, and
 interactive camera controls.
@@ -42,3 +42,15 @@ Pan Camera - LEFT CLICK <br>
 Zoom Camera - MouseWheel/Q/E <br>
 Quick Restart - R <br>
 Quick Pause - SPACE <br>
+
+
+## Screenshots
+![Main Menu](assets/mainMenu.png)
+
+![Settings](assets/settings.png)
+
+![2048x2048](assets/2048x2048.png)
+
+![512x512](assets/512x512.png)
+
+![128x128](assets/128x128.png)
