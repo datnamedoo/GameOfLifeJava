@@ -1,6 +1,7 @@
 package com.datnamedoo.www;
 import com.datnamedoo.www.signaling.EventInterface;
 
+// events that receivers are able to connect to
 public class AppEvents {
     public static enum GameLoopEvent implements EventInterface {
         SETPAUSE(0),

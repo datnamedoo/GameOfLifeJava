@@ -15,13 +15,13 @@ public class ConfGrid {  // a wrapper for configuring the initial grid
 
     }
 
-    public int[] getInfoArray() { //passed array with all relevant info as well as space for row offsets need in later calculations
+    // a simple array with info relevant to current grid
+    public int[] getInfoArray() {
         int[] tempMap = new int[3];
         tempMap[0] = longsPerRow;
         tempMap[1] = WIDTH;
         tempMap[2] = HEIGHT;
         return tempMap;
-        ////;ast slot is un assigned for eventual use as offset////
     }
 
     public void enableCell(int row, int column) {  //sets cell at pos to be alive
@@ -40,7 +40,7 @@ public class ConfGrid {  // a wrapper for configuring the initial grid
 
         int gridIdx = 0;
         for (int i = 0; i < totalLongs; i++) {  //create and add every long to array
-            long currentLong = 0;  //current long to be anded in
+            long currentLong = 0;  // initialize empty long to be added to
             for (int buffer = 63; buffer >= 0; buffer--) {  //this will fill the long in reverse so the grid is left to right
                 currentLong |= (long) grid[gridIdx] << buffer;
                 gridIdx += 1;

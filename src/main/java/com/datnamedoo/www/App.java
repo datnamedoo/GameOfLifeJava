@@ -14,9 +14,8 @@ import com.datnamedoo.www.mainmenu.GameConfig;
 
 
 
-/**
- * JavaFX App
- */
+// Entry point for program
+// everything branches from here
 public class App extends Application {
 
     private record SceneConfig(int width, int height, boolean resizable, StageStyle style){}

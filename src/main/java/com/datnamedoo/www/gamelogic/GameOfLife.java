@@ -20,7 +20,7 @@ public class GameOfLife{  //basic high level controls for game and config
     public static int chunkSize;
 
 
-   /////Functions for configuring intial grid and game settings////
+    // configure from confGrid object
     public static void confFromConfGrid(ConfGrid config) {  // configueres empty grid to certain dimensions
         confGrid = config;
         prevGrid = confGrid.toLongArray();  // two arrays for game
@@ -36,6 +36,7 @@ public class GameOfLife{  //basic high level controls for game and config
 
     }
 
+    // create grid from dimensions and make a new confGrid internally
     public static void confFromDimensions(int longsPerRow, int height) {
         confGrid = new ConfGrid(longsPerRow, height);
         prevGrid = confGrid.toLongArray();
@@ -49,7 +50,8 @@ public class GameOfLife{  //basic high level controls for game and config
     }
 
 
-      ////mostly functions for testing////
+      // function for testing a number of generations
+      // not implemented in GUI
     public static float[] getPerformanceTimes(int genLimit, String threadingType) {  //records times for generation up to a certain limit
         float[] allTimes = new float[genLimit];
 
@@ -72,8 +74,8 @@ public class GameOfLife{  //basic high level controls for game and config
     }
 
 
-   ////base of the main updating functions for the actual game////
-    public static long[] singleThreadUpdateGrid() {  // simple singlethreaded run of the row updating
+    // single threaded update, just goes row by row
+    public static long[] singleThreadUpdateGrid() {  
         for (int row = 0; row < confGrid.HEIGHT; row++) {  //update every row
             ArrayHelpers.updateRow(row, prevGrid, newGrid, gridInfo);
         }
@@ -84,7 +86,9 @@ public class GameOfLife{  //basic high level controls for game and config
         newGrid = temp;
         return prevGrid;  //return grid to caller
     }
-    public static long[] multiThreadUpdateGrid(){  //experimental, a lot fast for bigger grid sizes
+
+    // multithreaded update, delegates chunks to each thread
+    public static long[] multiThreadUpdateGrid(){  
         for (int row = 0; row < gridInfo[2]; row+=chunkSize) {  //iterate through chunks of rows and assign threads to process them
             counter.register();
             int startingRow = row;
@@ -97,7 +101,7 @@ public class GameOfLife{  //basic high level controls for game and config
                 }
             });
         }
-            counter.arriveAndAwaitAdvance();  //waits for all threads before continueing
+            counter.arriveAndAwaitAdvance();  //waits for all threads before moving on
             
             long [] temp = prevGrid;
             prevGrid = newGrid;  // swaps grids to be used again

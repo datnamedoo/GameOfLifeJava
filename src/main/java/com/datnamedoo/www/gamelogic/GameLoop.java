@@ -23,7 +23,7 @@ public class GameLoop implements ReceiverInterface {
     private volatile boolean isRestartable = false;
 
 
-
+    // initialize all desired values from user
     public GameLoop(int columns, int rows, int speed, Object lock, String threading) {
         subscribeToEvents();
         this.lock = lock;

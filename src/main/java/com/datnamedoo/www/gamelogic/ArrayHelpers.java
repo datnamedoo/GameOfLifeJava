@@ -50,7 +50,7 @@ public class ArrayHelpers {  //important functions for handling long array
         }
     }
 
-    public static void setAllDead(long[] array, int[] gridInfo) {  //same as set all alive but used setCellDead as a base
+    public static void setAllDead(long[] array, int[] gridInfo) {  //same as set all alive but uses setCellDead as a base
         for (int y = 0; y < gridInfo[2]; y++) {  // just goes through and flips every bit for testing
             for (int x = 0; x < gridInfo[1]; x++) {
                 ArrayHelpers.setCellDead(y, x, array, gridInfo[0]);
@@ -58,6 +58,7 @@ public class ArrayHelpers {  //important functions for handling long array
         }       
     }
 
+    // sets all bits on board to a random value (0 or 1)
     public static void setAllRandom(float density,long[] array, int[] gridInfo) {  
 
         Random rng = new Random();  //instance random for random number generation
@@ -72,9 +73,10 @@ public class ArrayHelpers {  //important functions for handling long array
     }
 
 
+    // generates hash for current bit and it's neighbors
     public static int getNeighborHash(int row, int column, long[] array, int[] gridInfo) {
-        int neighborHash = 0;  //initialize neighbor has to be added to
-        int neighborCount = 0;
+        int neighborHash = 0;  //initialize neighbor hash
+        int neighborCount = 0; // number of neighbors
 
         for (int newIdx=0; newIdx<neighborOFFSETS.length; newIdx+=2) {  //iterate through every two indexes of neighbor offets
             int nx = Math.floorMod(column + neighborOFFSETS[newIdx+1], gridInfo[1]);
@@ -103,31 +105,33 @@ public class ArrayHelpers {  //important functions for handling long array
         }
             else if (state==1) {
                 if (bitCount==2 || bitCount==3) { // note bitcount is increased by one compared to the other here
-                    newArray[i]=1;                 // this is due to the state bit being included now                   
+                    newArray[i]=1;                 // this is due to the state bit being included in bitount now            
                 }
             }
         } 
     
-    return newArray;  // this is only down once, hopefully...
+    return newArray;  // return array for all future use
 
         }
     
 
+        // updates a single row on the grid
         public static void updateRow(int row, long[] prevGen, long[] newGen ,int[] gridInfo) {
         for (int currentIdx = 0; currentIdx < gridInfo[1]; currentIdx++) {  //iterates through and updates all cells in a row
             int newCellState = stateLUT[ArrayHelpers.getNeighborHash(row, currentIdx, prevGen, gridInfo)];
 
-            if (newCellState==1) {
+            if (newCellState==1) { // cell is alive
                 ArrayHelpers.setCellAlive(row, currentIdx, newGen, gridInfo[0]);
             }
 
-            else if (newCellState==0) {
+            else if (newCellState==0) { // cell is dead
                 ArrayHelpers.setCellDead(row, currentIdx, newGen, gridInfo[0]);
             }
         }
     }
 
-        public static void updateRows(int startingRow, int numOfRows,long[] prevGen, long[] newGen, int[] gridInfo) {  // updates a number of rows from a given starting row
+    // updates a certain amount of rows starting from a given initial row
+        public static void updateRows(int startingRow, int numOfRows,long[] prevGen, long[] newGen, int[] gridInfo) {  
             for (int row = startingRow; row < (startingRow+numOfRows); row++) {
                 updateRow(row, prevGen, newGen, gridInfo);
             }

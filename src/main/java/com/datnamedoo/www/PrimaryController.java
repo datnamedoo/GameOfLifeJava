@@ -16,6 +16,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.ScrollEvent;
 import javafx.fxml.FXML;
 
+// controller for grid GUI
 public class PrimaryController {
     @FXML
     private VBox mainContainer;

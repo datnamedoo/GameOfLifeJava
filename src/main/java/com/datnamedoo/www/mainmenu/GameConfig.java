@@ -4,6 +4,7 @@ import com.datnamedoo.www.Renderer.Position;
 import com.datnamedoo.www.Renderer.PalettePreset;;
 
 
+// holds a configuration for the game engine and gui elements
 public class GameConfig {
 
     // enum for available grid dimensions (could probably go higher idk)
